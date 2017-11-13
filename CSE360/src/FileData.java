@@ -93,9 +93,9 @@ public class FileData {
 
 	@Override
 	public String toString() {
-		return "\nfileName=" + fileName + " | " + date + "\n lines=" + lines + "\n blankLines=" + blankLines + "\n spaces="
-				+ spaces + "\n words=" + words + "\n averageCharsPerLine=" + averageCharsPerLine + "\n averageWordLength="
-				+ averageWordLength + "\n mostCommonWord=" + mostCommon.word
-				+ "\n mostCommonWordFrequency=" + mostCommon.count;
+		return "\nFile Name = " + fileName + " | " + date + "\n Number Of Lines = " + lines + "\n Number Of Blank Lines = " + blankLines + "\n Number Of Spaces = "
+				+ spaces + "\n Number Of Words = " + words + "\n Average Chars Per Line = " + averageCharsPerLine + "\n Average Word Length = "
+				+ averageWordLength + "\n Most Common Word = " + mostCommon.word
+				+ "\n Most Common Word Frequency = " + mostCommon.count;
 	}
 }
