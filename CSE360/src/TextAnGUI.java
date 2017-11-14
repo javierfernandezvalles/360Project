@@ -50,8 +50,8 @@ public class TextAnGUI {
 				try {
 					TextAnGUI window = new TextAnGUI();
 					window.frmTextFileAnalyzer.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
+				} catch (Exception z) {
+					z.printStackTrace();
 				}
 			}
 		});
@@ -78,7 +78,7 @@ public class TextAnGUI {
 		btnHelp.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnHelp.setToolTipText("");
 		btnHelp.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent y) {
 				JOptionPane.showMessageDialog(null, 
 						"Please select the text file that you wish to analyze. \n"
 						+ "File History will provide a list of all the Text files analyzed. \n"
@@ -86,7 +86,7 @@ public class TextAnGUI {
 			}
 		
 		});
-		btnHelp.setBounds(631, 389, 205, 40);
+		btnHelp.setBounds(681, 389, 205, 40);
 		frmTextFileAnalyzer.getContentPane().add(btnHelp);
 		
 		// use a linked list to store the data from every file processed
@@ -102,7 +102,7 @@ public class TextAnGUI {
 		fileChooser.addActionListener(new ActionListener() 
 		
 			{
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent y) {
 				// Calendar and DateFormat classes used for recording the time each
 				// file was processed in the program. 
 				Calendar cal;
@@ -153,7 +153,7 @@ public class TextAnGUI {
 			
 		JButton btnHistory = new JButton("File History");// File History JButton
 		btnHistory.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent y) {
 				if (history.size() == 0) {
 			        JOptionPane.showMessageDialog(null, "No files have been processed.");
 				} else {
@@ -165,7 +165,40 @@ public class TextAnGUI {
 			}
 		});
 		btnHistory.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnHistory.setBounds(143, 389, 205, 40);
+		btnHistory.setBounds(90, 389, 205, 40);
 		frmTextFileAnalyzer.getContentPane().add(btnHistory);
+		
+		JButton btnFileAverages = new JButton("File Averages");
+		btnFileAverages.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent y) {
+				int avgLines = 0, avgBlankLines = 0, avgSpaces = 0,avgWords = 0, avgAvgCharsPerLine = 0, avgAvgWordLength = 0;
+				int s = history.size();
+				int a = 0, b = 0, c = 0, d = 0, e = 0, f = 0;
+				for(int i = 0; i < s; i++){
+					a += history.get(i).getLines();
+					b += history.get(i).getBlankLines();
+					c += history.get(i).getSpaces();
+					d += history.get(i).getWords();
+					e += history.get(i).getAverageCharsPerLine();
+					f += history.get(i).getAverageWordLength();
+
+				}
+				if(s != 0){
+					avgLines = a/s;
+					avgBlankLines = b/s;
+					avgSpaces = c/s;
+					avgWords = d/s;
+					avgAvgCharsPerLine = e/s;
+					avgAvgWordLength = f/s;
+				}
+				JOptionPane.showMessageDialog(null, "Over All Averages:\n\nAverage Lines = " + avgLines + "\nAverage Blank Lines = " + avgBlankLines + "\nAverage Spaces = " + avgSpaces
+						+ "\nAverage Words = " + avgWords + "\nAverage Chars Per Line = " + avgAvgCharsPerLine + "\nAverage Word Length = "
+						+ avgAvgWordLength); 
+
+			}
+		});
+		btnFileAverages.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnFileAverages.setBounds(385, 389, 205, 40);
+		frmTextFileAnalyzer.getContentPane().add(btnFileAverages);
 	}
 }
