@@ -18,6 +18,5 @@ public class WordNode {
 	public static void nodePrint(WordNode w){
 		System.out.println("Word: " + "'" + w.word + "'" + " | Frequency: " + w.count);
 	}
-	
 
 }

@@ -1,10 +1,11 @@
 import java.util.LinkedList;
+import java.lang.StringBuilder;
 
 // Used for computation of average metrics across all files
 public class Averages {
 	int avgLines = 0, avgBlankLines = 0, avgSpaces = 0,
 	avgWords = 0, avgAvgCharsPerLine = 0, avgAvgWordLength = 0;
-	
+
 	
 	public Averages() {
 		// TODO Auto-generated constructor stub
@@ -33,11 +34,19 @@ public class Averages {
 		}
 	}
 
+	
+	public String stringAvgtext(int a, int b, int c, int d, int e, int f) {			//Displays info depending on check marks selected
+		StringBuilder builder = new StringBuilder();
+		builder.append(" Overall File Averages:");
+		if(a == 1){builder.append("\n Average Lines = " + avgLines) ; } 
+		if(b == 1){builder.append("\n Average Blank Lines =" + avgBlankLines ); } 
+		if(c == 1){builder.append("\n Average Spaces = " + avgSpaces); } 
+		if(d == 1){builder.append("\n Average Words = " + avgWords); }
+		if(e == 1){builder.append("\n Average Characters Per Line = " + avgAvgCharsPerLine); } 
+		if(f == 1){builder.append("\n Average Word Length = "+ avgAvgWordLength ); } 
 
-	@Override
-	public String toString() {
-		return "Averages [avgLines=" + avgLines + ", avgBlankLines=" + avgBlankLines + ", avgSpaces=" + avgSpaces
-				+ ", avgWords=" + avgWords + ", avgAvgCharsPerLine=" + avgAvgCharsPerLine + ", avgAvgWordLength="
-				+ avgAvgWordLength + "]";
+		return builder.toString();
 	}
+	
+
 }

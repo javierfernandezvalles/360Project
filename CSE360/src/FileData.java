@@ -1,3 +1,7 @@
+import java.lang.StringBuilder;
+
+
+
 // used to store the data of files that have already been processed 
 public class FileData {
 	private String fileName, date;
@@ -89,13 +93,21 @@ public class FileData {
 	public String getDate(){
 		return date;
 	}
+	
 
-
-	@Override
-	public String toString() {
-		return "\nFile Name = " + fileName + " | " + date + "\n Number Of Lines = " + lines + "\n Number Of Blank Lines = " + blankLines + "\n Number Of Spaces = "
-				+ spaces + "\n Number Of Words = " + words + "\n Average Chars Per Line = " + averageCharsPerLine + "\n Average Word Length = "
-				+ averageWordLength + "\n Most Common Word = " + mostCommon.word
-				+ "\n Most Common Word Frequency = " + mostCommon.count;
+	
+	public String stringtext(int a, int b, int c, int d, int e, int f, int g, int h) {	//Displays info depending on check marks selected
+		StringBuilder builder = new StringBuilder();
+		builder.append(" File Name: " + fileName + " | " + date) ;
+		if(a == 1){builder.append("\n Number Of Lines = " + lines) ; } 
+		if(b == 1){builder.append("\n Number Of Blank Lines = " + blankLines); } 
+		if(c == 1){builder.append("\n Number Of Spaces = " + spaces); } 
+		if(d == 1){builder.append("\n Number Of Words = " + words); }
+		if(e == 1){builder.append("\n Average Characters Per Line = " + averageCharsPerLine); } 
+		if(f == 1){builder.append("\n Average Word Length = " + averageWordLength); } 
+		if(g == 1){builder.append("\n Most Common Word = " + mostCommon.word); } 
+		if(h == 1){builder.append("\n Most Common Word Frequency = " + mostCommon.count); }
+		return builder.toString();
 	}
+		
 }
