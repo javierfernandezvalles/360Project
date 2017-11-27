@@ -79,6 +79,7 @@ public class GUI {
 	public static class Global{
 		static String[] fileName;
 		static File[] h;
+		static FileData newFileData;
 		static int NumLinesStat = 1, NumBlankStat = 1, NumSpacesStat = 1, NumWordsStat = 1, //Sets the status of check marks to 1 (checked) by default
 				AvgCharStat = 1, AvgWordLthStat = 1, MostCmnStat = 1, MstCmnWrdFrqStat = 1;
 	}
@@ -92,6 +93,7 @@ public class GUI {
 
 		
 		// use a linked list to store the data from every file processed
+		// history linked list
 		LinkedList<FileData> history = new LinkedList<FileData>();
 		// Calendar and DateFormat classes used for recording the time each
 		// file was processed in the program. 
@@ -271,7 +273,7 @@ public class GUI {
 					Ave.compute(history);		
 					textArea.setText(Ave.stringAvgtext(
 							Global.NumLinesStat, Global.NumBlankStat, Global.NumSpacesStat, Global.NumWordsStat, 
-							Global.AvgCharStat, Global.AvgWordLthStat)); //------
+							Global.AvgCharStat, Global.AvgWordLthStat) + Global.newFileData.stringAvg(Global.MostCmnStat, Global.MstCmnWrdFrqStat)); 
 				}
 			}
 		});
@@ -296,27 +298,25 @@ public class GUI {
 						// occurs in the file.
 						// ***MUST DO THIS BEFORE THE OTHER FILE METRICS CAN BE USED***
 						LinkedList<WordNode> L = FileMetrics.wordCount(fileContents);
-						
 						// get date of file processing, store in FileData node for the
-						// history linked list
 						Calendar cal;
 						cal = Calendar.getInstance();
-						FileData newFileData = new FileData(Global.h[x].getName(), fileDate.format(cal.getTime()));
+						Global.newFileData = new FileData(Global.h[x].getName(), fileDate.format(cal.getTime()));
 						// Use the Linked List L and the String File Contents to calculate and store all the
 						// file metrics in a FileData node
-						newFileData.setAverageCharsPerLine((int) FileMetrics.averageCharsPerLine(L, fileContents));
-						newFileData.setAverageWordLength((int) FileMetrics.averageWordLength(L));
-						newFileData.setBlankLines(FileMetrics.totalEmptyLines(fileContents));
-						newFileData.setLines(FileMetrics.totalLines(fileContents));
-						newFileData.setMostCommon(FileMetrics.topWord(L));
-						newFileData.setSpaces(FileMetrics.totalSpaces(fileContents));
-						newFileData.setWords(FileMetrics.totalWords(L));
-				        textArea.append(newFileData.stringtext(				//Checks to see what which check marks have been selected (out put)
+						Global.newFileData.setAverageCharsPerLine((int) FileMetrics.averageCharsPerLine(L, fileContents));
+						Global.newFileData.setAverageWordLength((int) FileMetrics.averageWordLength(L));
+						Global.newFileData.setBlankLines(FileMetrics.totalEmptyLines(fileContents));
+						Global.newFileData.setLines(FileMetrics.totalLines(fileContents));
+						Global.newFileData.setMostCommon(FileMetrics.topWord(L));
+						Global.newFileData.setSpaces(FileMetrics.totalSpaces(fileContents));
+						Global.newFileData.setWords(FileMetrics.totalWords(L));
+				        textArea.append(Global.newFileData.stringtext(				//Checks to see what which check marks have been selected (out put)
 				        		Global.NumLinesStat, Global.NumBlankStat, Global.NumSpacesStat, Global.NumWordsStat, Global.AvgCharStat, 
 				        		Global.AvgWordLthStat, Global.MostCmnStat, Global.MstCmnWrdFrqStat)+"\n\n");
 						// keep the data from the file stored in the history linked list
 						// by storing a FileData data node in the history linked list
-						history.add(newFileData);
+						history.add(Global.newFileData);
 						}
 					} 
 					catch (IOException e1) {

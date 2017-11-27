@@ -22,7 +22,6 @@ public class Averages {
 			d += history.get(i).getWords();
 			e += history.get(i).getAverageCharsPerLine();
 			f += history.get(i).getAverageWordLength();
-
 		}
 		if(s != 0){
 			avgLines = a/s;

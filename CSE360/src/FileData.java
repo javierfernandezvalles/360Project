@@ -109,5 +109,14 @@ public class FileData {
 		if(h == 1){builder.append("\n Most Common Word Frequency = " + mostCommon.count); }
 		return builder.toString();
 	}
+	
+	public String stringAvg(int i, int j) {	//Displays info depending on check marks selected
+		StringBuilder builder = new StringBuilder();
+		if(i == 1){builder.append("\n Average Most Common Word = " + mostCommon.word); } 
+		if(j == 1){builder.append("\n Average Most Common Word Frequency = " + mostCommon.count); }
+		return builder.toString();
+	}
+	
+	
 		
 }
