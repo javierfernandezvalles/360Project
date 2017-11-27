@@ -1,0 +1,5 @@
+Also
+I am another cool file
+And my average
+Char per line
+is  12

@@ -1,6 +1,7 @@
 import static org.junit.Assert.*;
 
 import java.io.File;
+import java.util.LinkedList;
 
 import org.junit.Test;
 import org.apache.commons.io.FileUtils; // used for copying the file's contents to a string
@@ -21,7 +22,7 @@ public class FileManagerTests {
 		String fileContents = FileUtils.readFileToString(fileName);
 		assertEquals(2, FileMetrics.totalEmptyLines(fileContents));
 	}
-	
+	 	 	
 	@Test
 	public void testCorrectNumberOfSpaces() {
 		String fileName = "TestFile02.txt";
@@ -40,6 +41,7 @@ public class FileManagerTests {
 	public void testAverageCharactersPerLineInTheFile() {
 		String fileName = "TestFile04.txt";
 		String fileContents = FileUtils.readFileToString(fileName);
-		assertEquals(6, FileMetrics.averageCharsPerLine(list, fileContents));
+		LinkedList<WordNode> L = FileMetrics.wordCount(fileContents);
+		assertEquals(6, (int)FileMetrics.averageCharsPerLine(L, fileContents));
 	}
 }
